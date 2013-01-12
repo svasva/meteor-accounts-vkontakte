@@ -19,6 +19,7 @@
                 '&scope=' + config.scope +
                 '&redirect_uri=' + Meteor.absoluteUrl('_oauth/vkontakte?close=close', {replaceLocalhost: false}) +
                 '&response_type=code' +
+                '&display=popup' +
                 '&state=' + state;
 
         Accounts.oauth.initiateLogin(state, loginUrl, callback);
