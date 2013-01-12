@@ -4,6 +4,9 @@
 
         var accessToken = getAccessToken(query);
         var profile = getUserInfo(accessToken.access_token);
+        profile.name = profile.first_name + ' ' +
+            profile.nickname + ' ' +
+            profile.last_name;
         return {
             serviceData: {
                 id: accessToken.user_id,
