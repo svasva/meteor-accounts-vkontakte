@@ -8,7 +8,7 @@ Package.on_use(function(api) {
   api.use('http', ['client', 'server']);
   api.use('templating', 'client');
 
-  api.add_files(['vk_configure.html', 'vk_configure.js'], 'client');
+  api.add_files(['vk_configure.html', 'vk_configure.js', 'vk_logo.css'], 'client');
 
   api.add_files('vk_common.js', ['client', 'server']);
   api.add_files('vk_server.js', 'server');

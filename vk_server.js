@@ -42,7 +42,7 @@
                 client_id: config.clientId,
                 client_secret: config.secret,
                 code: query.code,
-                redirect_uri: Meteor.absoluteUrl("_oauth/vkontakte?close=close", {replaceLocalhost: true})
+                redirect_uri: Meteor.absoluteUrl("_oauth/vkontakte?close=close", {replaceLocalhost: false})
             }});
 
         if (result.error) // if the http response was an error
