@@ -6,15 +6,10 @@
 
         return {
             serviceData: {
-                id: accessToken.user.id,
-                accessToken: accessToken.access_token,
-                username: accessToken.user.username
+                id: accessToken.user_id,
+                accessToken: accessToken.access_token
             },
             options: {
-                profile: {
-                    name: accessToken.user.full_name,
-                    picture: accessToken.user.profile_picture
-                }
             }
         };
     });

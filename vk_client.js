@@ -18,7 +18,8 @@
                 '?client_id=' + config.clientId +
                 '&scope=' + config.scope +
                 '&redirect_uri=' + Meteor.absoluteUrl('_oauth/vkontakte?close=close', {replaceLocalhost: true}) +
-                '&response_type=code';
+                '&response_type=code' +
+                '&state=' + state;
 
         Accounts.oauth.initiateLogin(state, loginUrl, callback);
     };
