@@ -3,16 +3,31 @@
     Accounts.oauth.registerService('vkontakte', 2, function(query) {
 
         var accessToken = getAccessToken(query);
-
+        var profile = getUserInfo(accessToken.access_token);
         return {
             serviceData: {
                 id: accessToken.user_id,
                 accessToken: accessToken.access_token
             },
-            options: {
-            }
+            options: { profile: profile }
         };
     });
+
+    var getUserInfo = function (access_token) {
+        var result = Meteor.http.post(
+            "https://api.vk.com/method/users.get", {params: {
+                access_token: access_token,
+                fields: 'nickname, sex, bdate, timezone, photo, photo_big'
+            }});
+        if (result.error) // if the http response was an error
+            throw result.error;
+        if (typeof result.content === "string")
+            result.content = JSON.parse(result.content);
+        if (result.content.error) // if the http response was a json object with an error attribute
+            throw result.content;
+        profile = result.content.response[0];
+        return profile;
+    };
 
     var getAccessToken = function (query) {
         var config = Accounts.loginServiceConfiguration.findOne({service: 'vkontakte'});
