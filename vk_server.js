@@ -6,9 +6,7 @@
         var profile = getUserInfo(accessToken.access_token);
         profile.city = getCity(accessToken.access_token, profile.city);
         profile.country = getCountry(accessToken.access_token, profile.country);
-        profile.name = profile.first_name + ' ' +
-            profile.nickname + ' ' +
-            profile.last_name;
+        profile.name = profile.first_name + ' ' + profile.last_name;
         return {
             serviceData: {
                 id: accessToken.user_id,

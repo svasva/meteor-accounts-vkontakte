@@ -3,7 +3,7 @@
   "description": "Login service for VKontakte accounts",
   "homepage": "https://github.com/erundook/meteor-accounts-vkontakte",
   "author": "Vitaly A. Sorokin",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "git": "https://github.com/erundook/meteor-accounts-vkontakte.git"
 }
 
