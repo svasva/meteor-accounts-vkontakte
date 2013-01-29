@@ -4,8 +4,10 @@
 
         var accessToken = getAccessToken(query);
         var profile = getUserInfo(accessToken.access_token);
-        profile.city = getCity(accessToken.access_token, profile.city);
-        profile.country = getCountry(accessToken.access_token, profile.country);
+        if (profile.city)
+            profile.city = getCity(accessToken.access_token, profile.city);
+        if (profile.country)
+            profile.country = getCountry(accessToken.access_token, profile.country);
         profile.name = profile.first_name + ' ' + profile.last_name;
         return {
             serviceData: {
@@ -44,7 +46,11 @@
             result.content = JSON.parse(result.content);
         if (result.content.error) // if the http response was a json object with an error attribute
             throw result.content;
-        return result.content.response[0].name;
+        var resp = result.content.response;
+        if (resp && resp[0] && resp[0].name)
+            return resp[0].name;
+        else
+            return 'unknown';
     };
 
     var getCountry = function (access_token, cityId) {
@@ -59,7 +65,11 @@
             result.content = JSON.parse(result.content);
         if (result.content.error) // if the http response was a json object with an error attribute
             throw result.content;
-        return result.content.response[0].name;
+        var resp = result.content.response;
+        if (resp && resp[0] && resp[0].name)
+            return resp[0].name;
+        else
+            return 'unknown';
     };
 
 
